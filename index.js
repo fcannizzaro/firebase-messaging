@@ -22,9 +22,12 @@ module.exports = function(firebase_key) {
 
             if (cb)
                 if (body != null)
-                    cb(body);
-                else
-                    cb(err);
+                    try {
+                        cb(JSON.parse(body));
+                    } catch (err) {
+                        cb(body);
+                    } else
+                        cb(err);
 
         });
     }
