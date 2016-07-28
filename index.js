@@ -12,11 +12,27 @@ module.exports = function(firebase_key) {
         json: {}
     };
 
-    function send(to, data, cb) {
+    function checkSet(json, opt, key, expected) {
+        if (opt[key] && typeof opt[key] == expected)
+            json[key] = opt[key];
+    }
+
+    function send(to, data, opt, cb) {
 
         let options = JSON.parse(JSON.stringify(this.options));
-        options.json.to = to;
-        options.json.data = data;
+
+        var json = options.json;
+
+        if (typeof opt == "function")
+            cb = opt;
+
+        json.to = to;
+        json.data = data;
+
+        checkSet(json, opt, "collapse_key", "string");
+        checkSet(json, opt, "time_to_live", "number");
+        checkSet(json, opt, "delay_while_idle", "boolean");
+        checkSet(json, opt, "notification", "object");
 
         request(options, function(err, response, body) {
 
@@ -33,11 +49,11 @@ module.exports = function(firebase_key) {
     }
 
     return {
-        message: function(to, data, cb) {
-            send(to, data, cb);
+        message: function(to, data, opt, cb) {
+            send(to, data, opt, cb);
         },
-        topic: function(topic, data, cb) {
-            send("/topics/" + topic, data, cb);
+        topic: function(topic, data, opt, cb) {
+            send("/topics/" + topic, data, opt, cb);
         }
     };
 
