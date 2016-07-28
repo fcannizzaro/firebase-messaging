@@ -13,7 +13,7 @@ module.exports = function(firebase_key) {
     };
 
     function checkSet(json, opt, key, expected) {
-        if (opt[key] && typeof opt[key] == expected)
+        if (opt && opt[key] && typeof opt[key] == expected)
             json[key] = opt[key];
     }
 
