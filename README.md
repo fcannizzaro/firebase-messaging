@@ -1,4 +1,6 @@
 # firebase-messaging
+[![npm](https://img.shields.io/npm/v/firebase-messaging.svg)](https://www.npmjs.com/package/firebase-messaging)
+
 NodeJS module to send firebase messages
 
 # Install
