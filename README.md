@@ -26,7 +26,7 @@ Send message to device
 
 const firebase = require("firebase-messaging");
 
-var client = firebase(CLOUD_MESSAGING_KEY);
+var client = new firebase(CLOUD_MESSAGING_KEY);
 
 var data = {
     title: "@Test",
