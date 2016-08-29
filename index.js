@@ -28,6 +28,7 @@ firebase.prototype.send = function(to, data, opt, cb) {
     json.to = to;
     json.data = data;
 
+    checkSet(json, opt, "priority", "string");
     checkSet(json, opt, "collapse_key", "string");
     checkSet(json, opt, "time_to_live", "number");
     checkSet(json, opt, "delay_while_idle", "boolean");

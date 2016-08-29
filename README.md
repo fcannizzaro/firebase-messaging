@@ -4,7 +4,7 @@
 NodeJS module to send firebase messages
 
 # Install
-`npm install firebase-messagging`
+`npm install firebase-messaging`
 
 ## topic(topic, data, [, options, callback])
 Send message to topic
@@ -14,6 +14,7 @@ Send message to device
  
 # Options
 - *collapse_key* [**String**]
+- *priority* [**String**]
 - *time_to_live* [**Number**]
 - *delay_while_idle* [**Boolean**]
 - *notification* [**Object**]
