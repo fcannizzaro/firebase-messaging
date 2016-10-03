@@ -24,7 +24,7 @@ firebase.prototype.send = function(to, data, opt, cb) {
 
     if (typeof opt == "function")
         cb = opt;
-    
+
     json[typeof to === "object" && to instanceof Array ? "registration_ids" : "to"] = to;
     json.data = data;
 
@@ -37,13 +37,14 @@ firebase.prototype.send = function(to, data, opt, cb) {
     request(options, function(err, response, body) {
 
         if (cb)
-            if (body != null)
+            if (body !== null)
                 try {
                     cb(JSON.parse(body));
-                } catch (err) {
+                } catch (e) {
                     cb(body);
-                } else
-                    cb(err);
+                }
+            else
+                cb(err);
 
     });
 
