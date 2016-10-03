@@ -1,6 +1,6 @@
 {
     "name": "firebase-messaging",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "description": "Module to send firebase messages",
     "main": "index.js",
     "scripts": {
