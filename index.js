@@ -24,8 +24,8 @@ firebase.prototype.send = function(to, data, opt, cb) {
 
     if (typeof opt == "function")
         cb = opt;
-
-    json.to = to;
+    
+    json[typeof to === "object" && to instanceof Array ? "registration_ids" : "to"] = to;
     json.data = data;
 
     checkSet(json, opt, "priority", "string");
